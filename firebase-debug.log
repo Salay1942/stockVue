@@ -1,0 +1,8 @@
+[debug] [2023-11-14T07:39:49.115Z] ----------------------------------------------------------------------
+[debug] [2023-11-14T07:39:49.117Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\BCEL\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-11-14T07:39:49.117Z] CLI Version:   12.8.1
+[debug] [2023-11-14T07:39:49.118Z] Platform:      win32
+[debug] [2023-11-14T07:39:49.118Z] Node Version:  v16.17.0
+[debug] [2023-11-14T07:39:49.119Z] Time:          Tue Nov 14 2023 14:39:49 GMT+0700 (Indochina Time)
+[debug] [2023-11-14T07:39:49.119Z] ----------------------------------------------------------------------
+[debug] 
