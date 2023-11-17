@@ -7,7 +7,6 @@
       <div style="text-align: center">
         <el-form
           :model="ruleForm"
-          status-icon
           :rules="rules"
           ref="ruleForm"
           label-width="120px"
@@ -21,8 +20,15 @@
             <el-input v-model="ruleForm.price" autocomplete="off"></el-input>
           </el-form-item>
 
-          <el-form-item label="ຈໍານວນ" prop="age">
-            <el-input v-model="ruleForm.age"></el-input>
+          <el-form-item
+            label="ຈໍານວນ"
+            prop="amount"
+            :rules="[
+              { required: true, message: 'amount is required' },
+              { type: 'number', message: 'amount must be a number' },
+            ]"
+          >
+            <el-input v-model.number="ruleForm.amount"></el-input>
           </el-form-item>
 
           <el-form-item>
@@ -49,31 +55,56 @@
 <script>
 export default {
   data() {
-    var checkName = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("ກະລຸນາປ້ອນຊື່ສິນຄ້າ"));
-      }
-    };
-    var checkPrice = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("ກະລຸນາປ້ອນລາຄາ"));
-      }
-    };
-    var checkAmount = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("ກະລຸນາປ້ອນຈໍານວນ"));
-      }
-    };
+    // var checkName = (value, callback) => {
+    //   if (!value) {
+    //     return callback(new Error("ກະລຸນາປ້ອນຊື່ສິນຄ້າ"));
+    //   } else {
+    //     callback();
+    //   }
+    // };
+    // var checkPrice = (value, callback) => {
+    //   if (!value) {
+    //     return callback(new Error("ກະລຸນາປ້ອນລາຄາ"));
+    //   } else {
+    //     callback();
+    //   }
+    // };
+    // var checkAmount = (value, callback) => {
+    //   if (!value) {
+    //     return callback(new Error("ກະລຸນາປ້ອນຈໍານວນ"));
+    //   } else {
+    //     callback();
+    //   }
+    // };
     return {
       ruleForm: {
         name: "",
         price: "",
-        age: "",
+        amount: "",
       },
       rules: {
-        name: [{ validator: checkName, trigger: "blur" }],
-        price: [{ validator: checkPrice, trigger: "blur" }],
-        age: [{ validator: checkAmount, trigger: "blur" }],
+        name: [
+          {
+            required: true,
+            message: "ກະລຸນາປ້ອນຊື່ສິນຄ້າ",
+            trigger: "change",
+          },
+        ],
+        price: [
+          {
+            required: true,
+            message: "ກະລຸນາປ້ອນລາຄາ",
+            trigger: "change",
+          },
+        ],
+        amount: [
+          {
+            type: "number",
+            required: true,
+            message: "Please pick a time",
+            trigger: "change",
+          },
+        ],
       },
     };
   },
@@ -82,7 +113,10 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert("submit!");
+          console.log(JSON.stringify(this.ruleForm));
+          console.log("submit!");
         } else {
+          console.log(JSON.stringify(this.ruleForm));
           console.log("error submit!!");
           return false;
         }
